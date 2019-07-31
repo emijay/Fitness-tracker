@@ -18,6 +18,15 @@ module.exports = (db) => {
       response.render('forms/workout')
   };
 
+  let createWorkoutController = (request, response) => {
+
+      db.fitness.createWorkout(request.body, (error, workoutCreated) => {
+        console.log(workoutCreated)
+        response.redirect('/');
+      });
+  };
+
+
 
 
 
@@ -28,7 +37,8 @@ module.exports = (db) => {
    */
   return {
     index: indexControllerCallback,
-    workoutForm
+    workoutForm,
+    createWorkout: createWorkoutController
   };
 
 }

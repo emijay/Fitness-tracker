@@ -13,48 +13,64 @@ class Register extends React.Component {
 
         <div className = "container mx-auto">
 
-          <form action="/users" method="POST" className ="text-black my-5">
-            <div class="form-group row">
-              <label for="exampleFormControlSelect2" class="col-sm-3 col-form-label">Workout Type</label>
-              <div class="col-sm-8">
-                <select class="form-control" name="workout_id" id="inputWorkoutType">
+          <form action="/workout" method="POST" className ="text-black my-5">
+            <div className="form-group row" id="divWorkoutType">
+              <label htmlFor="exampleFormControlSelect2" className="col-sm-3 col-form-label">Workout Type</label>
+              <div className="col-sm-8" >
+                <select className="form-control" name="workout_id" id="inputWorkoutType">
                   <option>Please select a workout</option>
-                  <option value="1" >Chest</option>
+                  <option value="1" >Arms</option>
                   <option value="2" >Back</option>
-                  <option value="3" >Arms</option>
-                  <option value="4" >Cardio</option>
-                  <option value="5" >Yoga</option>
+                  <option value="3" >Chest</option>
+                  <option value="4" >Legs</option>
+                  <option value="5" >Cardio</option>
+                  <option value="6" >Yoga</option>
                 </select>
               </div>
             </div>
-            <div class="form-group row">
-              <label for="inputExercise" class="col-sm-3 col-form-label">Name of Exercise</label>
-              <div class="col-sm-8">
-                <input type="text" name="name" class="form-control" id="inputtext" placeholder="Bench Press" />
+            <div className="form-group row" id="divExerciseName">
+              <label htmlFor="inputExercise" className="col-sm-3 col-form-label">Name of Exercise</label>
+              <div className="col-sm-8">
+                <input type="text" name="name" className="form-control" id="inputExerciseName"/>
               </div>
             </div>
-            <div class="form-group row">
-              <label for="inputWeight" class="col-sm-3 col-form-label">Weight (kg)</label>
-              <div class="col-sm-8">
-                <input type="text" name="weight" class="form-control" id="inputWeight" placeholder="45" />
+            <div className="form-group row" id="divWeight">
+              <label htmlFor="inputWeight" className="col-sm-3 col-form-label">Weight (kg)</label>
+              <div className="col-sm-8">
+                <input type="text" name="weight" className="form-control" id="inputWeight"/>
               </div>
             </div>
-            <div class="form-group row">
-              <label for="inputReps" class="col-sm-3 col-form-label">Repetitions</label>
-              <div class="col-sm-8">
-                <input type="text" name="reps" class="form-control" id="inputReps" placeholder="4" />
+            <div className="form-group row" id="divReps">
+              <label htmlFor="inputReps" className="col-sm-3 col-form-label">Repetitions</label>
+              <div className="col-sm-8">
+                <input type="text" name="reps" className="form-control" id="inputReps"/>
               </div>
             </div>
-            <div class="form-group row">
-              <label for="inputSets" class="col-sm-3 col-form-label">Sets</label>
-              <div class="col-sm-8">
-                <input type="text" name="sets" class="form-control" id="inputSets" placeholder="4" />
+            <div className="form-group row" id="divSets">
+              <label htmlFor="inputSets" className="col-sm-3 col-form-label">Sets</label>
+              <div className="col-sm-8">
+                <input type="text" name="sets" className="form-control" id="inputSets"/>
+              </div>
+            </div>
+            <div className="form-group row" id="divDistance">
+              <label htmlFor="inputDistance" className="col-sm-3 col-form-label">Distance</label>
+              <div className="col-sm-8">
+                <input type="text" name="distance" className="form-control" id="inputDistance"/>
+              </div>
+            </div>
+            <div className="form-group row" id="divDuration">
+              <label htmlFor="inputDuration" className="col-sm-3 col-form-label">Duration</label>
+              <div className="col-sm-8">
+                <input type="text" name="duration" className="form-control" id="inputDuration"/>
               </div>
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
 
-          </div>
+        </div>
+
+        <script src='/script.js'/>
+
         </body>
       </html>
     );

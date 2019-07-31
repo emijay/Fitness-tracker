@@ -19,6 +19,6 @@ module.exports = (app, allModels) => {
 
   app.get('/workout', fitnessControllerCallbacks.workoutForm)
 
-  // app.post('/workout', fitnessControllerCallbacks.createWorkout)
+  app.post('/workout', fitnessControllerCallbacks.createWorkout)
 
 };
