@@ -7,22 +7,28 @@ module.exports = (db) => {
    */
 
   let indexControllerCallback = (request, response) => {
-      // db.fitness.getAll((error, allPokemon) => {
-      //   response.render('pokemon/index', { allPokemon });
-      // });
-
-      response.render('index')
+      response.redirect('/home')
   };
 
   let workoutForm = (request, response) => {
       response.render('forms/workout')
   };
 
+  let homePageController = (request, response) => {
+
+      db.fitness.displayWorkout( (error, lastWorkout) => {
+        // response.redirect('/');
+        console.log(lastWorkout)
+        response.render('index', { lastWorkout : lastWorkout });
+      });
+  };
+
   let createWorkoutController = (request, response) => {
 
-      db.fitness.createWorkout(request.body, (error, workoutCreated) => {
+      db.fitness.createWorkout( request.body, (error, workoutCreated) => {
         console.log(workoutCreated)
         response.redirect('/');
+
       });
   };
 
@@ -37,8 +43,9 @@ module.exports = (db) => {
    */
   return {
     index: indexControllerCallback,
+    homePage : homePageController,
     workoutForm,
-    createWorkout: createWorkoutController
+    createWorkout : createWorkoutController
   };
 
 }

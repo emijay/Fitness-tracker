@@ -24,7 +24,6 @@ class Register extends React.Component {
                   <option value="3" >Chest</option>
                   <option value="4" >Legs</option>
                   <option value="5" >Cardio</option>
-                  <option value="6" >Yoga</option>
                 </select>
               </div>
             </div>
@@ -53,13 +52,13 @@ class Register extends React.Component {
               </div>
             </div>
             <div className="form-group row" id="divDistance">
-              <label htmlFor="inputDistance" className="col-sm-3 col-form-label">Distance</label>
+              <label htmlFor="inputDistance" className="col-sm-3 col-form-label">Distance (m)</label>
               <div className="col-sm-8">
                 <input type="text" name="distance" className="form-control" id="inputDistance"/>
               </div>
             </div>
             <div className="form-group row" id="divDuration">
-              <label htmlFor="inputDuration" className="col-sm-3 col-form-label">Duration</label>
+              <label htmlFor="inputDuration" className="col-sm-3 col-form-label">Duration (min)</label>
               <div className="col-sm-8">
                 <input type="text" name="duration" className="form-control" id="inputDuration"/>
               </div>
