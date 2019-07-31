@@ -1,6 +1,7 @@
 
 var React = require('react');
 
+
 class Form extends React.Component {
   render() {
     return (
@@ -11,19 +12,19 @@ class Form extends React.Component {
         </head>
         <body style={{backgroundImage : 'url("https://www.bestfunforall.com/better/imgs/Cutie%20wallpaper%20%2017.jpg")', backgroundPosition : "center", backgroundRepeat : "no-repeat", backgroundSize : "cover", height : "100vh", backgroundAttachment : "fixed"}}>
 
-        <div className = "container mx-auto">
+        <div className="container mx-auto position-absolute" style={{top:"50%", right: "50%", transform: "translate(50%,-50%)"}}>
 
-          <form action="/workout" method="POST" className ="text-black my-5">
+          <form action="/workout" method="POST" className ="text-black my-5 mx-5">
             <div className="form-group row" id="divWorkoutType">
               <label htmlFor="exampleFormControlSelect2" className="col-sm-3 col-form-label">Workout Type</label>
               <div className="col-sm-8" >
                 <select className="form-control" name="workout_id" id="inputWorkoutType">
                   <option>Please select a workout</option>
-                  <option value="1" >Arms</option>
-                  <option value="2" >Back</option>
-                  <option value="3" >Chest</option>
-                  <option value="4" >Legs</option>
-                  <option value="5" >Cardio</option>
+                  <option value="1">Arms</option>
+                  <option value="2">Back</option>
+                  <option value="3">Chest</option>
+                  <option value="4">Legs</option>
+                  <option value="5">Cardio</option>
                 </select>
               </div>
             </div>
@@ -63,7 +64,7 @@ class Form extends React.Component {
                 <input type="text" name="duration" className="form-control" id="inputDuration"/>
               </div>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary" style={{position:"relative", right:"-50%",    transform: 'translate(-50%, 0)'}}>Submit</button>
           </form>
 
         </div>

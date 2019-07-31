@@ -4,6 +4,8 @@ var React = require('react');
 class Home extends React.Component {
   render() {
 
+    console.log(this.props.currentMacros)
+
     const exercise = this.props.lastWorkout.map(item=> {
         return( <tr>
                     <td scope="row">{item.name}</td>
@@ -28,30 +30,52 @@ class Home extends React.Component {
         <div className="container mx-auto mt-5">
           <div className="row">
 
-          <h2>Last Workout</h2>
+            <h2>Last Workout</h2>
 
-          <table className="table table-bordered">
-            <thead>
-                <tr>
+            <table className="table table-bordered table-hover">
+                <thead>
+                    <tr>
                     <th scope="col">Name of Exercise</th>
                     <th scope="col">Weight (kg)</th>
                     <th scope="col">Reps</th>
                     <th scope="col">Sets</th>
                     <th scope="col">Distance (m)</th>
                     <th scope="col">Duration (mins)</th>
-                </tr>
-            </thead>
-            <tbody>
-                {exercise}
-            </tbody>
-        </table>
+                    </tr>
+                </thead>
+                <tbody>
+                    {exercise}
+                </tbody>
+            </table>
 
-        <h2>Current Macros</h2>
+            <h2>Current Macros</h2>
 
-
-
-
-
+            <div class="card-group">
+              <div class="card" style={{width: "30rem"}}>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Carbohydrates (g)</h5>
+                  <p class="card-text">{this.props.currentMacros.carbs}</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Protein (g)</h5>
+                  <p class="card-text">{this.props.currentMacros.protein}</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Fats (g)</h5>
+                  <p class="card-text">{this.props.currentMacros.fat}</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Calories</h5>
+                  <p class="card-text">{this.props.currentMacros.calories}</p>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>

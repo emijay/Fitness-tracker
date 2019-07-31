@@ -17,9 +17,17 @@ module.exports = (db) => {
   let homePageController = (request, response) => {
 
       db.fitness.displayWorkout( (error, lastWorkout) => {
-        // response.redirect('/');
-        // console.log(lastWorkout)
-        response.render('index', { lastWorkout : lastWorkout });
+
+        db.fitness.displayMacros( (error, currentMacros) => {
+
+          const data = {
+            lastWorkout : lastWorkout,
+            currentMacros : currentMacros
+          }
+
+          response.render('index', data);
+
+        });
       });
   };
 
@@ -38,7 +46,7 @@ module.exports = (db) => {
   let createMacrosController = (request, response) => {
 
       db.fitness.createMacros(request.body, (error, macrosCreated) => {
-        console.log(macrosCreated)
+
         response.redirect('/');
       });
   };

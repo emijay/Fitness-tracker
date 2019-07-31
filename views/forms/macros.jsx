@@ -11,9 +11,9 @@ class Form extends React.Component {
         </head>
         <body style={{backgroundImage : 'url("https://www.bestfunforall.com/better/imgs/Cutie%20wallpaper%20%2017.jpg")', backgroundPosition : "center", backgroundRepeat : "no-repeat", backgroundSize : "cover", height : "100vh", backgroundAttachment : "fixed"}}>
 
-        <div className = "container mx-auto">
+        <div className="container mx-auto position-absolute" style={{top:"50%", right: "50%", transform: "translate(50%,-50%)"}}>
 
-          <form action="/macros" method="POST" className ="text-black my-5">
+          <form action="/macros" method="POST" className ="text-black my-5 mx-5">
 
             <div className="form-group row">
               <label htmlFor="inputCarbs" className="col-sm-3 col-form-label">Carbohydrates (g)</label>
@@ -41,7 +41,7 @@ class Form extends React.Component {
             </div>
 
 
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary" style={{position:"relative", right:"-50%",    transform: 'translate(-50%, 0)'}}>Submit</button>
           </form>
 
         </div>

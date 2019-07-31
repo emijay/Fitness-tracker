@@ -97,9 +97,31 @@ module.exports = (dbPoolInstance) => {
       });
   };
 
+  let displayMacros = (callback) => {
+
+    let query = "SELECT SUM(carbs) carbs, SUM(protein) protein, SUM(fat) fat, SUM(calories) calories from macros WHERE created_at=(SELECT MAX(created_at) FROM exercises)";
+
+    dbPoolInstance.query(query, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows[0]);
+        }else{
+          callback(null, null);
+
+        }
+      }
+    });
+  };
+
   return {
     createWorkout,
     displayWorkout,
-    createMacros
+    createMacros,
+    displayMacros
   };
 };
