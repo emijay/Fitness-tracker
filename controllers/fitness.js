@@ -14,6 +14,12 @@ module.exports = (db) => {
       response.render('index')
   };
 
+  let workoutForm = (request, response) => {
+      response.render('forms/workout')
+  };
+
+
+
 
   /**
    * ===========================================
@@ -22,6 +28,7 @@ module.exports = (db) => {
    */
   return {
     index: indexControllerCallback,
+    workoutForm
   };
 
 }

@@ -17,4 +17,8 @@ module.exports = (app, allModels) => {
 
   app.get('/', fitnessControllerCallbacks.index)
 
+  app.get('/workout', fitnessControllerCallbacks.workoutForm)
+
+  // app.post('/workout', fitnessControllerCallbacks.createWorkout)
+
 };
