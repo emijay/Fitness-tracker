@@ -75,8 +75,31 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+  let createMacros = (dataObj, callback) => {
+
+    let query = "INSERT INTO macros (carbs, protein, fat, calories) VALUES ($1, $2, $3, $4) RETURNING *";
+
+      const values = [dataObj.carbs, dataObj.protein, dataObj.fat, dataObj.calories]
+
+      dbPoolInstance.query(query, values, (error, queryResult) => {
+        if( error ){
+          // invoke callback function with results after query has executed
+          callback(error, null);
+
+        }else{
+          // invoke callback function with results after query has executed
+          if( queryResult.rows.length > 0 ){
+            callback(null, queryResult.rows);
+          }else{
+            callback(null, null);
+          }
+        }
+      });
+  };
+
   return {
     createWorkout,
-    displayWorkout
+    displayWorkout,
+    createMacros
   };
 };

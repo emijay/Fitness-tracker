@@ -1,7 +1,7 @@
 
 var React = require('react');
 
-class Register extends React.Component {
+class Form extends React.Component {
   render() {
     return (
       <html>
@@ -76,4 +76,4 @@ class Register extends React.Component {
   }
 }
 
-module.exports = Register;
+module.exports = Form;
