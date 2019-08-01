@@ -34,7 +34,7 @@ class Home extends React.Component {
         <div className="row">
             <div style={{width:'100%', backgroundColor: 'rgba(255,255,255,0.9)'}}>
                 <h3 className='text-center pt-3'>Last Workout</h3>
-                <div className="card-body">
+                <div className="card-body pt-0">
                     <h5>Cardio</h5>
                     <table className="table table-bordered table-hover">
                         <thead>
@@ -71,59 +71,49 @@ class Home extends React.Component {
             <div style={{width:'100%', backgroundColor: 'rgba(255,255,255,0.9)', marginTop: '10px'}}>
                 <h3 className='text-center py-3'>Current Macros</h3>
 
-                <div className="row">
-                  <div className="col-sm-6">
-                    <div className="card">
-                      <div className="card-body">
+                <div className="card mb-3 w-100" >
+                  <div className="row no-gutters">
+                    <div className="col-md-8">
                         <canvas id="myChart"></canvas>
-                      </div>
                     </div>
-                  </div>
 
-                  <div className="col-sm-6">
-                    <div className="card">
-                        <div className="card-body text-center">
+                    <div className="col-md-4">
+                        <div className="card-body">
                             <h5 className="card-title">Calories</h5>
-                            <p className="card-text">{this.props.currentMacros.calories}<span className="text-muted"> / 1000</span></p>
+                            <p className="card-text">
+                                {this.props.currentMacros.calories}
+                                <span className="text-muted"> / 1000</span>
+                            </p>
                         </div>
-
-                    </div>
-
-                    <div className="card">
-                        <div className="card-group">
-                    <div className="card">
-                        <div className="card-body text-center">
-                            <h5 className="card-title">Carbohydrates (g)</h5>
-                            <p className="card-text">{this.props.currentMacros.carbs}<span className="text-muted"> / 1000</span></p>
+                        <div className="card-body">
+                            <h5 className="card-title">Carbs (g)</h5>
+                            <p className="card-text">
+                                {this.props.currentMacros.carbs}
+                                <span className="text-muted"> / 1000</span>
+                            </p>
                         </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-body text-center">
+                        <div className="card-body">
                             <h5 className="card-title">Protein (g)</h5>
-                            <p className="card-text">{this.props.currentMacros.protein}<span className="text-muted"> / 1000</span></p>
+                            <p className="card-text">
+                                {this.props.currentMacros.protein}
+                                <span className="text-muted"> / 1000</span>
+                            </p>
                         </div>
-                    </div>
-                    <div className="card">
-                        <div className="card-body text-center">
+                        <div className="card-body">
                             <h5 className="card-title">Fats (g)</h5>
-                            <p className="card-text">{this.props.currentMacros.fat}<span className="text-muted"> / 1000</span></p>
+                            <p className="card-text">
+                            {this.props.currentMacros.fat}
+                            <span className="text-muted"> / 1000</span></p>
                         </div>
                     </div>
-                </div>
-                    </div>
+
                   </div>
                 </div>
-
-
 
                 <a className="btn btn-info my-3" href="/macros" role="button" style={{ width: '15%', position: 'relative', left: '50%',transform: 'translate(-50%, 0)' }}>Update Macros</a>
             </div>
         </div>
     </div>
-
-
-
-
 
 
     </Layout>
