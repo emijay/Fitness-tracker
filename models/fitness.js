@@ -54,7 +54,7 @@ module.exports = (dbPoolInstance) => {
     }
   };
 
-  let displayWorkout = (callback) => {
+  let lastWorkout = (callback) => {
 
     let query = "SELECT * FROM exercises WHERE created_at=(SELECT MAX(created_at) FROM exercises)";
 
@@ -74,6 +74,49 @@ module.exports = (dbPoolInstance) => {
       }
     });
   };
+
+  let lastCardioWorkout = (callback) => {
+
+    let query = "SELECT * FROM exercises WHERE created_at = (select MAX(created_at) from exercises) AND workout_id = 5";
+
+    dbPoolInstance.query(query, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows);
+        }else{
+          callback(null, null);
+
+        }
+      }
+    });
+  };
+
+  let lastStrengthWorkout = (callback) => {
+
+    let query = "SELECT * FROM exercises WHERE created_at = (select MAX(created_at) from exercises) AND workout_id = 1 OR workout_id=2 OR workout_id=3 OR workout_id=4;";
+
+    dbPoolInstance.query(query, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows);
+        }else{
+          callback(null, null);
+
+        }
+      }
+    });
+  };
+
 
   let createMacros = (dataObj, callback) => {
 
@@ -99,7 +142,7 @@ module.exports = (dbPoolInstance) => {
 
   let displayMacros = (callback) => {
 
-    let query = "SELECT SUM(carbs) carbs, SUM(protein) protein, SUM(fat) fat, SUM(calories) calories from macros WHERE created_at=(SELECT MAX(created_at) FROM exercises)";
+    let query = "SELECT SUM(carbs) carbs, SUM(protein) protein, SUM(fat) fat, SUM(calories) calories from macros WHERE created_at=(SELECT MAX(created_at) FROM macros)";
 
     dbPoolInstance.query(query, (error, queryResult) => {
       if( error ){
@@ -120,7 +163,9 @@ module.exports = (dbPoolInstance) => {
 
   return {
     createWorkout,
-    displayWorkout,
+    lastWorkout,
+    lastCardioWorkout,
+    lastStrengthWorkout,
     createMacros,
     displayMacros
   };

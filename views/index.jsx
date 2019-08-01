@@ -4,16 +4,21 @@ var React = require('react');
 class Home extends React.Component {
   render() {
 
-    console.log(this.props.currentMacros)
+    const cardioExercises = this.props.lastCardioWorkout.map(item=> {
+        return( <tr>
+                    <td scope="row">{item.name}</td>
+                    <td>{item.distance}</td>
+                    <td>{item.duration}</td>
+                </tr>
+        )
+    });
 
-    const exercise = this.props.lastWorkout.map(item=> {
+    const strengthExercises = this.props.lastStrengthWorkout.map(item=> {
         return( <tr>
                     <td scope="row">{item.name}</td>
                     <td>{item.weight}</td>
                     <td>{item.reps}</td>
                     <td>{item.sets}</td>
-                    <td>{item.distance}</td>
-                    <td>{item.duration}</td>
                 </tr>
         )
     });
@@ -32,50 +37,72 @@ class Home extends React.Component {
 
             <h2>Last Workout</h2>
 
-            <table className="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                    <th scope="col">Name of Exercise</th>
-                    <th scope="col">Weight (kg)</th>
-                    <th scope="col">Reps</th>
-                    <th scope="col">Sets</th>
-                    <th scope="col">Distance (m)</th>
-                    <th scope="col">Duration (mins)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {exercise}
-                </tbody>
-            </table>
+            <div className="card w-100">
+              <div className="card-body">
+                <h4>Cardio</h4>
+                    <table className="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Name of Exercise</th>
+                            <th scope="col">Distance (m)</th>
+                            <th scope="col">Duration (mins)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {cardioExercises}
+                        </tbody>
+                    </table>
 
-            <h2>Current Macros</h2>
+                <h4>Weight Training</h4>
+                    <table className="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">Name of Exercise</th>
+                            <th scope="col">Weight (kg)</th>
+                            <th scope="col">Reps</th>
+                            <th scope="col">Sets</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {strengthExercises}
+                        </tbody>
+                    </table>
+              </div>
+            </div>
 
-            <div class="card-group">
-              <div class="card" style={{width: "30rem"}}>
-                <div class="card-body text-center">
-                  <h5 class="card-title">Carbohydrates (g)</h5>
-                  <p class="card-text">{this.props.currentMacros.carbs}</p>
+            <h2 className="mt-5">Current Macros</h2>
+
+            <div className="card w-100">
+
+              <div className="card-group">
+              <div className="card">
+                <div className="card-body text-center">
+                  <h5 className="card-title">Carbohydrates (g)</h5>
+                  <p className="card-text">{this.props.currentMacros.carbs}<span className="text-muted"> / 1000</span></p>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Protein (g)</h5>
-                  <p class="card-text">{this.props.currentMacros.protein}</p>
+              <div className="card">
+                <div className="card-body text-center">
+                  <h5 className="card-title">Protein (g)</h5>
+                  <p className="card-text">{this.props.currentMacros.protein}<span className="text-muted"> / 1000</span></p>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Fats (g)</h5>
-                  <p class="card-text">{this.props.currentMacros.fat}</p>
+              <div className="card">
+                <div className="card-body text-center">
+                  <h5 className="card-title">Fats (g)</h5>
+                  <p className="card-text">{this.props.currentMacros.fat}<span className="text-muted"> / 1000</span></p>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Calories</h5>
-                  <p class="card-text">{this.props.currentMacros.calories}</p>
+              <div className="card">
+                <div className="card-body text-center">
+                  <h5 className="card-title">Calories</h5>
+                  <p className="card-text">{this.props.currentMacros.calories}<span className="text-muted"> / 1000</span></p>
                 </div>
               </div>
             </div>
+            </div>
+
+
 
           </div>
         </div>

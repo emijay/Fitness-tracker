@@ -16,18 +16,22 @@ module.exports = (db) => {
 
   let homePageController = (request, response) => {
 
-      db.fitness.displayWorkout( (error, lastWorkout) => {
+      db.fitness.lastCardioWorkout( (error, lastCardioWorkout) => {
 
-        db.fitness.displayMacros( (error, currentMacros) => {
+        db.fitness.lastStrengthWorkout ( (error,lastStrengthWorkout) => {
+
+          db.fitness.displayMacros( (error, currentMacros) => {
 
           const data = {
-            lastWorkout : lastWorkout,
+            lastCardioWorkout : lastCardioWorkout,
+            lastStrengthWorkout : lastStrengthWorkout,
             currentMacros : currentMacros
           }
 
           response.render('index', data);
 
-        });
+          });
+        })
       });
   };
 
