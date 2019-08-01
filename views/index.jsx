@@ -30,16 +30,14 @@ class Home extends React.Component {
             <link href="https://fonts.googleapis.com/css?family=Leckerli+One|Lora&display=swap" rel="stylesheet"></link>
 
         </head>
-        <body style={{backgroundColor : '#E7ECF0'}}>
+        <body style={{backgroundImage : 'url("https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9")', backgroundPosition : "center", backgroundRepeat : "no-repeat", backgroundSize : "cover", height : "100vh", backgroundAttachment : "fixed"}}>
 
         <div className="container mx-auto mt-5">
           <div className="row">
-
-            <h2>Last Workout</h2>
-
             <div className="card w-100">
+             <h3 className='text-center pt-3'>Last Workout</h3>
               <div className="card-body">
-                <h4>Cardio</h4>
+                <h5>Cardio</h5>
                     <table className="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -53,7 +51,7 @@ class Home extends React.Component {
                         </tbody>
                     </table>
 
-                <h4>Weight Training</h4>
+                <h5>Weight Training</h5>
                     <table className="table table-bordered table-hover">
                         <thead>
                             <tr>
@@ -70,9 +68,8 @@ class Home extends React.Component {
               </div>
             </div>
 
-            <h2 className="mt-5">Current Macros</h2>
-
-            <div className="card w-100">
+            <div className="card w-100 mt-5">
+            <h3 className='text-center py-3'>Current Macros</h3>
 
               <div className="card-group">
               <div className="card">
