@@ -39,7 +39,7 @@ module.exports = (db) => {
 
       db.fitness.createWorkout(request.body, (error, workoutCreated) => {
         // console.log(workoutCreated)
-        response.redirect('/');
+        response.redirect('/workout');
       });
   };
 
