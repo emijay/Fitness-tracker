@@ -55,6 +55,10 @@ module.exports = (db) => {
       });
   };
 
+  let displayChart = (request, response) => {
+      response.render('forms/chart')
+  };
+
 
 
 
@@ -70,7 +74,8 @@ module.exports = (db) => {
     workoutForm,
     createWorkout : createWorkoutController,
     macrosForm,
-    createMacros : createMacrosController
+    createMacros : createMacrosController,
+    displayChart
   };
 
 }

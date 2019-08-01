@@ -72,6 +72,9 @@ class Form extends React.Component {
     </div>
 
     <script src='/script.js'/>
+
+
+
     </Layout>
     </body>
     );
