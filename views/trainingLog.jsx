@@ -14,7 +14,7 @@ class Form extends React.Component {
 
         <div style={{backgroundColor: 'rgba(255,255,255,0.8)'}}>
 
-            <h3 className='text-center pt-4'>What are you working on today?</h3>
+            <h3 className='text-center pt-4'>What are you looking for today?</h3>
 
             <form action="/workout" method="POST" className ="text-black my-5 mx-5">
                 <div className="form-group row" id="divWorkoutType">

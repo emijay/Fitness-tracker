@@ -56,10 +56,18 @@ module.exports = (db) => {
       });
   };
 
+  let trainingLogForm = (request, response) => {
+
+      response.render('trainingLog')
+
+  };
+
   let historyController = (request, response) => {
 
-      response.render('training')
+      db.fitness.getHistory(request.body, (error, macrosCreated) => {
 
+        response.redirect('/');
+      });
   };
 
 
@@ -75,7 +83,9 @@ module.exports = (db) => {
     createWorkout : createWorkoutController,
     macrosForm,
     createMacros : createMacrosController,
-    workoutHistory : historyController
+    trainingLogForm,
+    getWorkoutHistory : historyController
+
   };
 
 }

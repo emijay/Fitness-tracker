@@ -161,7 +161,7 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
-  let displayWorkouts = (callback) => {
+  let getHistory = (callback) => {
 
     let query = "SELECT * FROM exercises ORDER BY created_at ASC";
 
@@ -181,6 +181,8 @@ module.exports = (dbPoolInstance) => {
       }
     });
   };
+
+
 
   return {
     createWorkout,
