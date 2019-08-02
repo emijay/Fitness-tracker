@@ -27,7 +27,7 @@ class Layout extends React.Component {
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/workout">Add Workout</a>
-                  <a class="dropdown-item" href="#">Workouts History</a>
+                  <a class="dropdown-item" href="/history">Workouts History</a>
                   <a class="dropdown-item" href="#">Search Exercises</a>
                 </div>
               </li>

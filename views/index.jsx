@@ -36,7 +36,7 @@ class Home extends React.Component {
                 <h3 className='text-center pt-3'>Last Workout</h3>
                 <div className="card-body pt-0">
                     <h5>Cardio</h5>
-                    <table className="table table-bordered table-hover">
+                    <table className="table table-bordered table-hover bg-white">
                         <thead>
                             <tr>
                             <th scope="col">Name of Exercise</th>
@@ -50,7 +50,7 @@ class Home extends React.Component {
                     </table>
 
                     <h5>Weight Training</h5>
-                    <table className="table table-bordered table-hover">
+                    <table className="table table-bordered table-hover bg-white">
                         <thead>
                             <tr>
                             <th scope="col">Name of Exercise</th>
@@ -74,7 +74,7 @@ class Home extends React.Component {
                 <div className="card mb-3 w-100" >
                   <div className="row no-gutters">
                     <div className="col-md-8">
-                        <canvas id="myChart"></canvas>
+                        <canvas id="myChart" style={{    position: 'absolute',top: '50%',transform: 'translate(0,-50%)'}}></canvas>
                     </div>
 
                     <div className="col-md-4">
@@ -115,11 +115,18 @@ class Home extends React.Component {
         </div>
     </div>
 
-
     </Layout>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    {/* This line sends data over to the script file*/}
+    <script dangerouslySetInnerHTML=
+    { {__html:
+        "let currentMacros = "+JSON.stringify(this.props.currentMacros)+";"
+    }}/>
+
     <script src='/chart.js'/>
+
     </body>
     );
   }

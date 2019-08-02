@@ -38,8 +38,9 @@ module.exports = (db) => {
   let createWorkoutController = (request, response) => {
 
       db.fitness.createWorkout(request.body, (error, workoutCreated) => {
-        // console.log(workoutCreated)
-        response.redirect('/workout');
+
+        // line below signals the end of POST creation via AJAX
+        response.send(workoutCreated);
       });
   };
 
@@ -55,12 +56,11 @@ module.exports = (db) => {
       });
   };
 
-  let displayChart = (request, response) => {
-      response.render('forms/chart')
+  let historyController = (request, response) => {
+
+      response.render('training')
+
   };
-
-
-
 
 
   /**
@@ -75,7 +75,7 @@ module.exports = (db) => {
     createWorkout : createWorkoutController,
     macrosForm,
     createMacros : createMacrosController,
-    displayChart
+    workoutHistory : historyController
   };
 
 }

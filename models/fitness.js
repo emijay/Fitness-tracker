@@ -9,11 +9,11 @@ module.exports = (dbPoolInstance) => {
 
   let createWorkout = (dataObj, callback) => {
 
-    if (dataObj.workout_id === "5") {
+    if (dataObj.workout.workout_id === "5") {
 
       let query = "INSERT INTO exercises (name, distance, duration, workout_id) VALUES ($1, $2, $3, $4) RETURNING *";
 
-      const values = [dataObj.name, dataObj.distance, dataObj.duration, dataObj.workout_id]
+      const values = [dataObj.workout.name, dataObj.workout.distance, dataObj.workout.duration, dataObj.workout.workout_id]
 
 
       dbPoolInstance.query(query, values, (error, queryResult) => {
@@ -24,7 +24,7 @@ module.exports = (dbPoolInstance) => {
         }else{
           // invoke callback function with results after query has executed
           if( queryResult.rows.length > 0 ){
-            callback(null, queryResult.rows);
+            callback(null, queryResult.rows[0]);
           }else{
             callback(null, null);
           }
@@ -35,7 +35,7 @@ module.exports = (dbPoolInstance) => {
 
       let query = "INSERT INTO exercises (name, weight, reps, sets, workout_id) VALUES ($1, $2, $3, $4, $5) RETURNING *";
 
-      const values = [dataObj.name, dataObj.weight, dataObj.reps, dataObj.sets, dataObj.workout_id]
+      const values = [dataObj.workout.name, dataObj.workout.weight, dataObj.workout.reps, dataObj.workout.sets, dataObj.workout.workout_id]
 
       dbPoolInstance.query(query, values, (error, queryResult) => {
         if( error ){
@@ -45,7 +45,7 @@ module.exports = (dbPoolInstance) => {
         }else{
           // invoke callback function with results after query has executed
           if( queryResult.rows.length > 0 ){
-            callback(null, queryResult.rows);
+            callback(null, queryResult.rows[0]);
           }else{
             callback(null, null);
           }
@@ -143,6 +143,27 @@ module.exports = (dbPoolInstance) => {
   let displayMacros = (callback) => {
 
     let query = "SELECT SUM(carbs) carbs, SUM(protein) protein, SUM(fat) fat, SUM(calories) calories from macros WHERE created_at=(SELECT MAX(created_at) FROM macros)";
+
+    dbPoolInstance.query(query, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows[0]);
+        }else{
+          callback(null, null);
+
+        }
+      }
+    });
+  };
+
+  let displayWorkouts = (callback) => {
+
+    let query = "SELECT * FROM exercises ORDER BY created_at ASC";
 
     dbPoolInstance.query(query, (error, queryResult) => {
       if( error ){

@@ -1,5 +1,12 @@
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
+
+// Data has been passed over as an Object (currentMacros)
+let carbs = currentMacros.carbs;
+let protein = currentMacros.protein;
+let fat = currentMacros.fat;
+
+
+let ctx = document.getElementById('myChart').getContext('2d');
+let chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'doughnut',
 
@@ -10,7 +17,7 @@ var chart = new Chart(ctx, {
             label: 'Macro Breakdown',
             backgroundColor: ['#F8CD6B','#54A2E5','#ED6E85'],
             borderColor: '#fff',
-            data: [10, 20, 30]
+            data: [carbs, protein, fat]
         }]
     },
 
