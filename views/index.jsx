@@ -5,6 +5,10 @@ var Layout = require('./layout')
 class Home extends React.Component {
   render() {
 
+    const lastCardioDate = JSON.stringify(this.props.lastCardioWorkout[0].created_at);
+
+    const lastStrengthDate = JSON.stringify(this.props.lastStrengthWorkout[0].created_at);
+
     const cardioExercises = this.props.lastCardioWorkout.map(item=> {
         return( <tr>
                     <td scope="row">{item.name}</td>
@@ -39,7 +43,7 @@ class Home extends React.Component {
                     <table className="table table-bordered table-hover bg-white">
                         <thead>
                             <tr>
-                            <th scope="col">Name of Exercise</th>
+                            <th scope="col">{lastCardioDate}</th>
                             <th scope="col">Distance (m)</th>
                             <th scope="col">Duration (mins)</th>
                             </tr>
@@ -53,7 +57,7 @@ class Home extends React.Component {
                     <table className="table table-bordered table-hover bg-white">
                         <thead>
                             <tr>
-                            <th scope="col">Name of Exercise</th>
+                            <th scope="col">{lastStrengthDate}</th>
                             <th scope="col">Weight (kg)</th>
                             <th scope="col">Reps</th>
                             <th scope="col">Sets</th>
@@ -69,7 +73,7 @@ class Home extends React.Component {
             </div>
 
             <div style={{width:'100%', backgroundColor: 'rgba(255,255,255,0.9)', marginTop: '10px'}}>
-                <h3 className='text-center py-3'>Current Macros</h3>
+                <h3 className='text-center py-3'>Current Macronutrients</h3>
 
                 <div className="card mb-3 w-100" >
                   <div className="row no-gutters">

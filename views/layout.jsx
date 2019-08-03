@@ -32,7 +32,7 @@ class Layout extends React.Component {
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Macros
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Macronutrients
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/macros">Update Macros</a>
@@ -43,8 +43,8 @@ class Layout extends React.Component {
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Body Stats
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/stats">Update Stats</a>
                   <a class="dropdown-item" href="#">View Current Stats</a>
-                  <a class="dropdown-item" href="#">Update Stats</a>
                 </div>
               </li>
             </ul>

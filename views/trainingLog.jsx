@@ -14,12 +14,11 @@ class Form extends React.Component {
 
         <div style={{backgroundColor: 'rgba(255,255,255,0.8)'}}>
 
-            <h3 className='text-center pt-4'>What are you looking for today?</h3>
+            <h3 className='text-center pt-4'>Choose  workout type below to display training logs</h3>
 
-            <form action="/workout" method="POST" className ="text-black my-5 mx-5">
+            <form className ="text-black my-5 mx-5">
                 <div className="form-group row" id="divWorkoutType">
-
-                    <div className="col">
+                    <div className="col-4 position-relative" style={{right:'-50%', transform:'translate(-50%,0)'}}>
                         <select className="form-control" name="workout_id" id="inputWorkoutType">
                           <option>Please select a workout</option>
                           <option value="1">Arms</option>
@@ -34,10 +33,33 @@ class Form extends React.Component {
                 <button type="submit" id="submitBtn" className="btn btn-primary my-3" style={{position:"relative", right:"-50%",    transform: 'translate(-50%, 0)'}}>Submit</button>
             </form>
         </div>
+
+        <div style={{backgroundColor: 'rgba(255,255,255,0.8)'}}>
+            <h3 className='text-center pt-4'>Previous Training History</h3>
+
+            <div className="card-body pt-0">
+                <div id="todaysCardio" style={{}}>
+                    <table className="table table-bordered table-hover bg-white">
+                        <thead>
+                            <tr>
+                            <th scope="col">Name of Exercise</th>
+                            <th scope="col">Weight (kg)</th>
+                            <th scope="col">Reps</th>
+                            <th scope="col">Sets</th>
+                            <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tBodyStrength">
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src='/training.js'/>
-
+    <script src='/trainLog.js'/>
 
 
     </Layout>

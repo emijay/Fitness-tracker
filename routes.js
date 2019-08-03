@@ -28,4 +28,7 @@ module.exports = (app, allModels) => {
   app.get('/history',fitnessControllerCallbacks.trainingLogForm)
   app.post('/history',fitnessControllerCallbacks.getWorkoutHistory)
 
+  app.get('/stats', fitnessControllerCallbacks.statsForm)
+  app.post('/stats', fitnessControllerCallbacks.updateStats)
+
 };

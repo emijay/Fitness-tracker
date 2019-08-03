@@ -161,9 +161,9 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
-  let getHistory = (callback) => {
+  let getHistory = (dataObj, callback) => {
 
-    let query = "SELECT * FROM exercises ORDER BY created_at ASC";
+    let query = "SELECT * FROM exercises WHERE workout_id = '"+dataObj.workout_id+"' ";
 
     dbPoolInstance.query(query, (error, queryResult) => {
       if( error ){
@@ -173,13 +173,36 @@ module.exports = (dbPoolInstance) => {
       }else{
         // invoke callback function with results after query has executed
         if( queryResult.rows.length > 0 ){
-          callback(null, queryResult.rows[0]);
+          callback(null, queryResult.rows);
         }else{
           callback(null, null);
 
         }
       }
     });
+  };
+
+  let updateStats = (dataObj, callback) => {
+
+    let query = "INSERT INTO bodystats (height, weight, fatpercent) VALUES ($1, $2, $3) RETURNING *";
+
+      const values = [dataObj.height, dataObj.weight, dataObj.fatpercent]
+
+
+      dbPoolInstance.query(query, values, (error, queryResult) => {
+        if( error ){
+          // invoke callback function with results after query has executed
+          callback(error, null);
+
+        }else{
+          // invoke callback function with results after query has executed
+          if( queryResult.rows.length > 0 ){
+            callback(null, queryResult.rows[0]);
+          }else{
+            callback(null, null);
+          }
+        }
+      });
   };
 
 
@@ -190,6 +213,8 @@ module.exports = (dbPoolInstance) => {
     lastCardioWorkout,
     lastStrengthWorkout,
     createMacros,
-    displayMacros
+    displayMacros,
+    getHistory,
+    updateStats
   };
 };

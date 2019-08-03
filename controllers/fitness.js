@@ -64,9 +64,25 @@ module.exports = (db) => {
 
   let historyController = (request, response) => {
 
-      db.fitness.getHistory(request.body, (error, macrosCreated) => {
+      db.fitness.getHistory(request.body, (error, trainLogs) => {
 
-        response.redirect('/');
+        // response.redirect('/');
+      });
+  };
+
+  let statsForm = (request, response) => {
+
+      response.render('forms/bodystats')
+  };
+
+  let updateStatsController = (request, response) => {
+
+      db.fitness.updateStats(request.body, (error, workoutCreated) => {
+
+        response.redirect('/home');
+
+        // line below signals the end of POST creation via AJAX
+        // response.send(workoutCreated);
       });
   };
 
@@ -84,7 +100,9 @@ module.exports = (db) => {
     macrosForm,
     createMacros : createMacrosController,
     trainingLogForm,
-    getWorkoutHistory : historyController
+    getWorkoutHistory : historyController,
+    statsForm,
+    updateStats : updateStatsController
 
   };
 
