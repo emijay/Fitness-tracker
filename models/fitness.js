@@ -163,7 +163,10 @@ module.exports = (dbPoolInstance) => {
 
   let getHistory = (dataObj, callback) => {
 
-    let query = "SELECT * FROM exercises WHERE workout_id = '"+dataObj.workout_id+"' ";
+    // let query = "SELECT * FROM exercises WHERE workout_id = '"+dataObj.workout_id+"' ";
+
+    let query = "SELECT id,name,weight,reps,sets,distance,duration,workout_id,user_id,to_char(created_at, 'DD-MM-YYYY')FROM exercises WHERE workout_id = 5 ORDER BY created_at DESC";
+
 
     dbPoolInstance.query(query, (error, queryResult) => {
       if( error ){

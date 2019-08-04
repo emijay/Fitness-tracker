@@ -83,7 +83,7 @@ class Form extends React.Component {
                             <th scope="col">Name of Exercise</th>
                             <th scope="col">Distance (m)</th>
                             <th scope="col">Duration (mins)</th>
-                                </tr>
+                            </tr>
                         </thead>
                         <tbody id="tBodyCardio">
 
@@ -112,7 +112,7 @@ class Form extends React.Component {
 
 
 
-    <script src='/script.js'/>
+    <script src='/workoutScript.js'/>
 
 
 

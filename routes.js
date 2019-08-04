@@ -26,7 +26,7 @@ module.exports = (app, allModels) => {
   app.post('/macros',fitnessControllerCallbacks.createMacros)
 
   app.get('/history',fitnessControllerCallbacks.trainingLogForm)
-  app.post('/history',fitnessControllerCallbacks.getWorkoutHistory)
+  app.get('/viewhistory',fitnessControllerCallbacks.getWorkoutHistory)
 
   app.get('/stats', fitnessControllerCallbacks.statsForm)
   app.post('/stats', fitnessControllerCallbacks.updateStats)

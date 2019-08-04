@@ -10,9 +10,6 @@ module.exports = (db) => {
       response.redirect('/home')
   };
 
-  let workoutForm = (request, response) => {
-      response.render('forms/workout')
-  };
 
   let homePageController = (request, response) => {
 
@@ -33,6 +30,10 @@ module.exports = (db) => {
           });
         })
       });
+  };
+
+  let workoutForm = (request, response) => {
+      response.render('forms/workout')
   };
 
   let createWorkoutController = (request, response) => {
@@ -57,16 +58,17 @@ module.exports = (db) => {
   };
 
   let trainingLogForm = (request, response) => {
-
-      response.render('trainingLog')
+      response.render('forms/trainingLog')
 
   };
 
   let historyController = (request, response) => {
 
+      console.log(request.body)
+
       db.fitness.getHistory(request.body, (error, trainLogs) => {
 
-        // response.redirect('/');
+        response.send(trainLogs);
       });
   };
 

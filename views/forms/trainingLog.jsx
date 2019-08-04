@@ -1,6 +1,6 @@
 
 var React = require('react');
-var Layout = require('./layout')
+var Layout = require('../layout')
 
 class Form extends React.Component {
   render() {
@@ -35,10 +35,25 @@ class Form extends React.Component {
         </div>
 
         <div style={{backgroundColor: 'rgba(255,255,255,0.8)'}}>
-            <h3 className='text-center pt-4'>Previous Training History</h3>
+            <h3 className='text-center pt-4'>Training History</h3>
 
             <div className="card-body pt-0">
-                <div id="todaysCardio" style={{}}>
+                <div id="cardioTable" style={{}}>
+                    <table className="table table-bordered table-hover bg-white">
+                        <thead>
+                            <tr>
+                            <th scope="col">Name of Exercise</th>
+                            <th scope="col">Distance (m)</th>
+                            <th scope="col">Duration (mins)</th>
+                            <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tBodyCardio">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div id="strengthTable" style={{}}>
                     <table className="table table-bordered table-hover bg-white">
                         <thead>
                             <tr>
@@ -53,7 +68,6 @@ class Form extends React.Component {
 
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

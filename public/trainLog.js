@@ -13,36 +13,68 @@ submitBtn.addEventListener('click', function(event){
         workout_id
     }
 
-    doPostRequest(workoutID);
+    doRequest(workoutID);
 
 });
 
+const createCardioField = (workout) => {
+
+    let tr1 = document.createElement("tr");
+    let td1 = document.createElement("td");
+    let td2 = document.createElement("td");
+    let td3 = document.createElement("td");
+    let td4 = document.createElement("td");
+
+    td1.scope = "row";
+    td1.textContent = workout.name;
+    td2.textContent = workout.distance;
+    td3.textContent = workout.duration;
+    td4.textContent = workout.date;
+
+    tr1.appendChild(td1);
+    tr1.appendChild(td2);
+    tr1.appendChild(td3);
+    tr1.appendChild(td4);
+
+    document.querySelector('#tBodyCardio').appendChild(tr1);
+
+};
+
+let clearWorkoutTables = () => {
+
+    let node = document.querySelector("#tBodyCardio");
+
+    while (node.firstChild) {
+        node.removeChild(node.firstChild);
+    }
+};
 
 let doRequest = function(workoutID){
 
-    let data = { "workout" : workout };
+    let data = { "workoutID" : workoutID };
 
     let xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-    let theUrl = "/history";
+    let theUrl = "/viewhistory";
 
     // What happens after you get a response from AJAX POST
     xmlhttp.addEventListener("load", function(){
 
         // document.querySelector('#todaysWorkout').style.display = '';
-        // let response = JSON.parse(this.responseText)
+        let response = JSON.parse(this.responseText)
+        // console.log(response);
 
-        // if (response.workout_id === 5) {
-        //     document.querySelector('#todaysCardio').style.display = '';
-        //     createCardioField(response);
-        //     clearInputFields();
+        clearWorkoutTables();
 
-        // } else {
-        //     document.querySelector('#todaysStrength').style.display = '';
-        //     createStrengthField(response);
-        //     clearInputFields();
+        response.forEach(item => {
+            let workout = {
+                name : item.name,
+                distance: item.distance,
+                duration: item.duration,
+                date: item.to_char
+            }
 
-        // }
-
+            createCardioField(workout);
+        });
     });
 
     xmlhttp.open("GET", theUrl);
