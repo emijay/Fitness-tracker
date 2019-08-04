@@ -74,14 +74,20 @@ module.exports = (db) => {
 
   let statsForm = (request, response) => {
 
-      response.render('forms/bodystats')
+    db.fitness.getStats((error, bodystats) => {
+
+      console.log(bodystats);
+
+      response.render('forms/bodystats', bodystats)
+      });
+
   };
 
   let updateStatsController = (request, response) => {
 
       db.fitness.updateStats(request.body, (error, workoutCreated) => {
 
-        response.redirect('/home');
+        response.redirect('/stats');
 
         // line below signals the end of POST creation via AJAX
         // response.send(workoutCreated);

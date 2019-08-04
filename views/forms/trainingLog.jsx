@@ -34,11 +34,11 @@ class Form extends React.Component {
             </form>
         </div>
 
-        <div style={{backgroundColor: 'rgba(255,255,255,0.8)'}}>
+        <div id="trainingHistory" style={{backgroundColor: 'rgba(255,255,255,0.8)', display: 'none'}}>
             <h3 className='text-center pt-4'>Training History</h3>
 
             <div className="card-body pt-0">
-                <div id="cardioTable" style={{}}>
+                <div id="cardioTable" style={{display: "none"}}>
                     <table className="table table-bordered table-hover bg-white">
                         <thead>
                             <tr>
@@ -53,7 +53,7 @@ class Form extends React.Component {
                         </tbody>
                     </table>
                 </div>
-                <div id="strengthTable" style={{}}>
+                <div id="strengthTable" style={{display: "none"}}>
                     <table className="table table-bordered table-hover bg-white">
                         <thead>
                             <tr>

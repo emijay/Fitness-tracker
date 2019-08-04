@@ -40,12 +40,45 @@ const createCardioField = (workout) => {
 
 };
 
+const createStrengthField = (workout) => {
+
+    let tr1 = document.createElement("tr");
+    let td1 = document.createElement("td");
+    let td2 = document.createElement("td");
+    let td3 = document.createElement("td");
+    let td4 = document.createElement("td");
+    let td5 = document.createElement("td");
+
+    td1.scope = "row";
+    td1.textContent = workout.name;
+    td2.textContent = workout.weight;
+    td3.textContent = workout.reps;
+    td4.textContent = workout.sets;
+    td5.textContent = workout.date;
+
+
+    tr1.appendChild(td1);
+    tr1.appendChild(td2);
+    tr1.appendChild(td3);
+    tr1.appendChild(td4);
+    tr1.appendChild(td5);
+
+    document.querySelector('#tBodyStrength').appendChild(tr1);
+
+};
+
 let clearWorkoutTables = () => {
 
     let node = document.querySelector("#tBodyCardio");
 
     while (node.firstChild) {
         node.removeChild(node.firstChild);
+    }
+
+    let node2 = document.querySelector("#tBodyStrength");
+
+    while (node2.firstChild) {
+        node2.removeChild(node2.firstChild);
     }
 };
 
@@ -59,7 +92,8 @@ let doRequest = function(workoutID){
     // What happens after you get a response from AJAX POST
     xmlhttp.addEventListener("load", function(){
 
-        // document.querySelector('#todaysWorkout').style.display = '';
+        document.querySelector('#trainingHistory').style.display = '';
+        document.querySelector('#cardioTable').style.display = '';
         let response = JSON.parse(this.responseText)
         // console.log(response);
 

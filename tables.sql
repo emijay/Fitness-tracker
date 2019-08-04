@@ -36,9 +36,18 @@ CREATE TABLE IF NOT EXISTS macros (
 
 CREATE TABLE IF NOT EXISTS bodystats (
 	id SERIAL PRIMARY KEY,
-	height INTEGER,
 	weight INTEGER,
 	fatpercent INTEGER,
+	user_id INTEGER,
+	created_at DATE DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS macrogoals (
+	id SERIAL PRIMARY KEY,
+	carbs INTEGER,
+	protein INTEGER,
+	fat INTEGER,
+	calories INTEGER,
 	user_id INTEGER,
 	created_at DATE DEFAULT now()
 );

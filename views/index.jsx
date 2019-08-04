@@ -5,9 +5,9 @@ var Layout = require('./layout')
 class Home extends React.Component {
   render() {
 
-    const lastCardioDate = JSON.stringify(this.props.lastCardioWorkout[0].created_at);
+    const lastCardioDate = (this.props.lastCardioWorkout[0].to_char);
 
-    const lastStrengthDate = JSON.stringify(this.props.lastStrengthWorkout[0].created_at);
+    const lastStrengthDate = (this.props.lastStrengthWorkout[0].to_char);
 
     const cardioExercises = this.props.lastCardioWorkout.map(item=> {
         return( <tr>
@@ -37,7 +37,7 @@ class Home extends React.Component {
     <div className="container mx-auto mt-5">
         <div className="row">
             <div style={{width:'100%', backgroundColor: 'rgba(255,255,255,0.9)'}}>
-                <h3 className='text-center pt-3'>Last Workout</h3>
+                <h3 className='text-center pt-3'>Recent Workouts</h3>
                 <div className="card-body pt-0">
                     <h5>Cardio</h5>
                     <table className="table table-bordered table-hover bg-white">
@@ -129,7 +129,7 @@ class Home extends React.Component {
         "let currentMacros = "+JSON.stringify(this.props.currentMacros)+";"
     }}/>
 
-    <script src='/chart.js'/>
+    <script src='/mainpagechart.js'/>
 
     </body>
     );
