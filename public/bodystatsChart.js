@@ -1,9 +1,6 @@
 
-// console.log(currentStats)
 
 var newArrayData = Object.values(currentStats)
-
-console.log(newArrayData)
 
 
 let weightArr = [];
@@ -17,10 +14,6 @@ for (let i = 0; i < (newArrayData.length - 3); i ++) {
     dateArr.push(newArrayData[i].to_char)
 }
 
-
-console.log(weightArr);
-console.log(fatpercentArr);
-console.log(dateArr);
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
