@@ -56,6 +56,12 @@ class Form extends React.Component {
                 <button type="button" class="btn btn-primary mt-2 mb-4" data-toggle="modal" data-target="#exampleModal" style={{position: 'relative',left: '50%', transform: 'translate(-50%,0)'}}>
                   Update Macros
                 </button>
+
+                <br />
+
+                <button type="button" class="btn btn-info mt-2 mb-4" data-toggle="modal" data-target="#exampleModal2" style={{position: 'relative',left: '50%', transform: 'translate(-50%,0)'}}>
+                  Set Goals
+                </button>
             </div>
         </div>
     </div>
@@ -96,6 +102,52 @@ class Form extends React.Component {
                           <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Fat</label>
                           <div className="col-sm-8">
                             <input type="number" name="fat" className="form-control" id="inputFat"/>
+                          </div>
+                        </div>
+                        <div className="form-group row">
+                          <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Calories</label>
+                          <div className="col-sm-8">
+                            <input type="number" name="calories" className="form-control" id="inputFat"/>
+                          </div>
+                        </div>
+                        <button type="submit" className="btn btn-primary my-3" style={{position: 'relative',left: '50%', transform: 'translate(-50%,0)'}}>Submit</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Set your goals below</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body">
+                    <form action="/goals" method="POST" className ="text-black my-5 mx-5">
+                        <div className="form-group row">
+                          <label htmlFor="inputName" className="col-sm-3 col-form-label">Carbs</label>
+                          <div className="col-sm-8">
+                            <input type="text" name="carbs" className="form-control" id="inputName"/>
+                          </div>
+                        </div>
+                        <div className="form-group row">
+                          <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Protein</label>
+                          <div className="col-sm-8">
+                            <input type="number" name="protein" className="form-control" id="inputCarbs"/>
+                          </div>
+                        </div>
+                        <div className="form-group row">
+                          <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Fat</label>
+                          <div className="col-sm-8">
+                            <input type="number" name="fat" className="form-control" id="inputProtein"/>
                           </div>
                         </div>
                         <div className="form-group row">

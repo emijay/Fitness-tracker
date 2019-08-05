@@ -156,9 +156,10 @@ module.exports = (db) => {
 
   let updateGoals = (request, response) => {
 
-    db.fitness.getStats(request.cookies.userID,(error, bodystats) => {
+    db.fitness.setGoals(request.cookies.userID, request.body, (error, goals) => {
 
-      response.render('forms/bodystats', bodystats)
+      response.redirect('/macros')
+
       });
 
   };

@@ -273,6 +273,29 @@ module.exports = (dbPoolInstance) => {
       });
   };
 
+  let setGoals = (userID, dataObj, callback) => {
+
+    let query = "INSERT INTO macrogoals (carbs, protein, fat, calories, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING *";
+
+      const values = [dataObj.carbs, dataObj.protein, dataObj.fat, dataObj.calories, userID];
+
+
+      dbPoolInstance.query(query, values, (error, queryResult) => {
+        if( error ){
+          // invoke callback function with results after query has executed
+          callback(error, null);
+
+        }else{
+          // invoke callback function with results after query has executed
+          if( queryResult.rows.length > 0 ){
+            callback(null, queryResult.rows[0]);
+          }else{
+            callback(null, null);
+          }
+        }
+      });
+  };
+
 
 
   return {
@@ -286,6 +309,7 @@ module.exports = (dbPoolInstance) => {
     createMacros,
     getHistory,
     getStats,
-    updateStats
+    updateStats,
+    setGoals
   };
 };
