@@ -5,28 +5,37 @@ var Layout = require('./layout')
 class Home extends React.Component {
   render() {
 
-    const lastCardioDate = (this.props.lastCardioWorkout[0].to_char);
+    let lastCardioDate;
+    let lastStrengthDate;
+    let cardioExercises;
+    let strengthExercises;
 
-    const lastStrengthDate = (this.props.lastStrengthWorkout[0].to_char);
+    if (this.props.lastCardioWorkout !== null) {
+        lastCardioDate = (this.props.lastCardioWorkout[0].to_char);
 
-    const cardioExercises = this.props.lastCardioWorkout.map(item=> {
-        return( <tr>
-                    <td scope="row">{item.name}</td>
-                    <td>{item.distance}</td>
-                    <td>{item.duration}</td>
-                </tr>
-        )
-    });
+        cardioExercises = this.props.lastCardioWorkout.map(item=> {
+            return( <tr>
+                        <td scope="row">{item.name}</td>
+                        <td>{item.distance}</td>
+                        <td>{item.duration}</td>
+                    </tr>
+            )
+        });
+    }
 
-    const strengthExercises = this.props.lastStrengthWorkout.map(item=> {
-        return( <tr>
-                    <td scope="row">{item.name}</td>
-                    <td>{item.weight}</td>
-                    <td>{item.reps}</td>
-                    <td>{item.sets}</td>
-                </tr>
-        )
-    });
+    if (this.props.lastStrengthWorkout !== null) {
+        lastStrengthDate = (this.props.lastStrengthWorkout[0].to_char);
+
+        strengthExercises = this.props.lastStrengthWorkout.map(item=> {
+            return( <tr>
+                        <td scope="row">{item.name}</td>
+                        <td>{item.weight}</td>
+                        <td>{item.reps}</td>
+                        <td>{item.sets}</td>
+                    </tr>
+            )
+        });
+    }
 
     return (
 
