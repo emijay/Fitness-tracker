@@ -26,27 +26,28 @@ CREATE TABLE IF NOT EXISTS exercises (
 
 CREATE TABLE IF NOT EXISTS macros (
 	id SERIAL PRIMARY KEY,
-	carbs INTEGER,
-	protein INTEGER,
-	fat INTEGER,
+	name TEXT,
+	carbs DECIMAL,
+	protein DECIMAL,
+	fat DECIMAL,
 	calories INTEGER,
 	user_id INTEGER,
-	created_at DATE DEFAULT now()
+	created_at TIMESTAMP DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS bodystats (
 	id SERIAL PRIMARY KEY,
-	weight INTEGER,
-	fatpercent INTEGER,
+	weight DECIMAL,
+	fatpercent DECIMAL,
 	user_id INTEGER,
 	created_at DATE DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS macrogoals (
 	id SERIAL PRIMARY KEY,
-	carbs INTEGER,
-	protein INTEGER,
-	fat INTEGER,
+	carbs DECIMAL,
+	protein DECIMAL,
+	fat DECIMAL,
 	calories INTEGER,
 	user_id INTEGER,
 	created_at DATE DEFAULT now()
