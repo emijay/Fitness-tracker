@@ -17,7 +17,7 @@ module.exports = (db) => {
 
         db.fitness.lastStrengthWorkout ( (error,lastStrengthWorkout) => {
 
-          db.fitness.displayMacros( (error, currentMacros) => {
+          db.fitness.displayTotalMacros( (error, currentMacros) => {
 
           const data = {
             lastCardioWorkout : lastCardioWorkout,
@@ -45,15 +45,23 @@ module.exports = (db) => {
       });
   };
 
-  let macrosForm = (request, response) => {
-      response.render('forms/macros')
+  let macrosPage = (request, response) => {
+
+      db.fitness.displayAllMacros( (error, allMacros) => {
+
+        data = {
+          allMacros : allMacros
+        }
+
+        response.render('forms/macros', data)
+      });
   };
 
   let createMacrosController = (request, response) => {
 
-      db.fitness.createMacros(request.body, (error, macrosCreated) => {
+      db.fitness.createMacros(request.body, (error, currentMacros) => {
 
-        response.redirect('/');
+        response.redirect('/macros');
       });
   };
 
@@ -64,8 +72,6 @@ module.exports = (db) => {
 
   let historyController = (request, response) => {
 
-      console.log(request.body)
-
       db.fitness.getHistory(request.body, (error, trainLogs) => {
 
         response.send(trainLogs);
@@ -75,8 +81,6 @@ module.exports = (db) => {
   let statsForm = (request, response) => {
 
     db.fitness.getStats((error, bodystats) => {
-
-      console.log(bodystats);
 
       response.render('forms/bodystats', bodystats)
       });
@@ -105,7 +109,7 @@ module.exports = (db) => {
     homePage : homePageController,
     workoutForm,
     createWorkout : createWorkoutController,
-    macrosForm,
+    macrosPage,
     createMacros : createMacrosController,
     trainingLogForm,
     getWorkoutHistory : historyController,

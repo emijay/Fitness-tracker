@@ -9,7 +9,7 @@ module.exports = (dbPoolInstance) => {
 
   let lastCardioWorkout = (callback) => {
 
-    let query = "SELECT id,name,distance,duration,workout_id,user_id,to_char(created_at, 'DD-MM-YYYY') FROM exercises WHERE created_at = (select MAX(created_at) from exercises) AND workout_id = 5";
+    let query = "SELECT id,name,distance,duration,workout_id,user_id,to_char(created_at, 'DD-MM-YYYY') FROM exercises WHERE workout_id = 5 AND created_at = (SELECT MAX(created_at) from (SELECT * FROM exercises WHERE workout_id = 5) AS foo)";
 
     dbPoolInstance.query(query, (error, queryResult) => {
       if( error ){
@@ -30,7 +30,7 @@ module.exports = (dbPoolInstance) => {
 
   let lastStrengthWorkout = (callback) => {
 
-    let query = "SELECT id,name,weight,reps,sets,workout_id,user_id,to_char(created_at, 'DD-MM-YYYY') FROM exercises WHERE created_at = (select MAX(created_at) from exercises) AND workout_id = 1 OR workout_id=2 OR workout_id=3 OR workout_id=4;";
+    let query = "SELECT id,name,weight,reps,sets,workout_id,user_id,to_char(created_at, 'DD-MM-YYYY') FROM exercises WHERE created_at = (SELECT MAX(created_at) from (SELECT * FROM exercises WHERE workout_id = 1 OR workout_id=2 OR workout_id=3 OR workout_id=4) as foo) AND (workout_id = 1 OR workout_id=2 OR workout_id=3 OR workout_id=4)";
 
     dbPoolInstance.query(query, (error, queryResult) => {
       if( error ){
@@ -49,7 +49,8 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
-  let displayMacros = (callback) => {
+
+  let displayTotalMacros = (callback) => {
 
     let query = "SELECT SUM(carbs) carbs, SUM(protein) protein, SUM(fat) fat, SUM(calories) calories from macros WHERE created_at=(SELECT MAX(created_at) FROM macros)";
 
@@ -117,11 +118,32 @@ module.exports = (dbPoolInstance) => {
     }
   };
 
+  let displayAllMacros = (callback) => {
+
+    let query = "SELECT id, name, carbs, protein, fat, calories, user_id, to_char(created_at,'DD-MM-YYYY') AS date, to_char(created_at, 'HH:MI') AS time FROM macros";
+
+    dbPoolInstance.query(query, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows);
+        }else{
+          callback(null, null);
+
+        }
+      }
+    });
+  };
+
   let createMacros = (dataObj, callback) => {
 
-    let query = "INSERT INTO macros (carbs, protein, fat, calories) VALUES ($1, $2, $3, $4) RETURNING *";
+    let query = "INSERT INTO macros (name, carbs, protein, fat, calories) VALUES ($1, $2, $3, $4, $5) RETURNING *";
 
-      const values = [dataObj.carbs, dataObj.protein, dataObj.fat, dataObj.calories]
+      const values = [dataObj.name, dataObj.carbs, dataObj.protein, dataObj.fat, dataObj.calories]
 
       dbPoolInstance.query(query, values, (error, queryResult) => {
         if( error ){
@@ -213,8 +235,9 @@ module.exports = (dbPoolInstance) => {
   return {
     lastCardioWorkout,
     lastStrengthWorkout,
-    displayMacros,
+    displayTotalMacros,
     createWorkout,
+    displayAllMacros,
     createMacros,
     getHistory,
     getStats,
