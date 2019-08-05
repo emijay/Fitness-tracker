@@ -21,11 +21,11 @@ module.exports = (db) => {
 
     if(request.cookies.loggedin === "true") {
 
-      db.fitness.lastCardioWorkout( (error, lastCardioWorkout) => {
+      db.fitness.lastCardioWorkout(request.cookies.userID, (error, lastCardioWorkout) => {
 
-        db.fitness.lastStrengthWorkout ( (error,lastStrengthWorkout) => {
+        db.fitness.lastStrengthWorkout (request.cookies.userID, (error,lastStrengthWorkout) => {
 
-          db.fitness.displayTotalMacros( (error, currentMacros) => {
+          db.fitness.displayTotalMacros(request.cookies.userID, (error, currentMacros) => {
 
           const data = {
             lastCardioWorkout : lastCardioWorkout,
@@ -87,12 +87,14 @@ module.exports = (db) => {
   };
 
   let workoutForm = (request, response) => {
+
       response.render('forms/workout')
   };
 
   let createWorkoutController = (request, response) => {
 
-      db.fitness.createWorkout(request.body, (error, workoutCreated) => {
+
+      db.fitness.createWorkout(request.cookies.userID,request.body, (error, workoutCreated) => {
 
         // line below signals the end of POST creation via AJAX
         response.send(workoutCreated);
@@ -101,7 +103,7 @@ module.exports = (db) => {
 
   let macrosPage = (request, response) => {
 
-      db.fitness.displayAllMacros( (error, allMacros) => {
+      db.fitness.displayAllMacros(request.cookies.userID, (error, allMacros) => {
 
         data = {
           allMacros : allMacros
@@ -113,7 +115,7 @@ module.exports = (db) => {
 
   let createMacrosController = (request, response) => {
 
-      db.fitness.createMacros(request.body, (error, currentMacros) => {
+      db.fitness.createMacros(request.cookies.userID, request.body, (error, currentMacros) => {
 
         response.redirect('/macros');
       });
@@ -126,7 +128,7 @@ module.exports = (db) => {
 
   let historyController = (request, response) => {
 
-      db.fitness.getHistory(request.body, (error, trainLogs) => {
+      db.fitness.getHistory(request.cookies.userID, request.body, (error, trainLogs) => {
 
         response.send(trainLogs);
       });
@@ -134,7 +136,7 @@ module.exports = (db) => {
 
   let statsForm = (request, response) => {
 
-    db.fitness.getStats((error, bodystats) => {
+    db.fitness.getStats(request.cookies.userID, (error, bodystats) => {
 
       response.render('forms/bodystats', bodystats)
       });
@@ -143,7 +145,7 @@ module.exports = (db) => {
 
   let updateStatsController = (request, response) => {
 
-      db.fitness.updateStats(request.body, (error, workoutCreated) => {
+      db.fitness.updateStats(request.cookies.userID, request.body, (error, workoutCreated) => {
 
         response.redirect('/stats');
 
@@ -154,7 +156,7 @@ module.exports = (db) => {
 
   let updateGoals = (request, response) => {
 
-    db.fitness.getStats((error, bodystats) => {
+    db.fitness.getStats(request.cookies.userID,(error, bodystats) => {
 
       response.render('forms/bodystats', bodystats)
       });

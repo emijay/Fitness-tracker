@@ -11,7 +11,7 @@ class landingPage extends React.Component {
         </head>
         <body>
           <div class="row">
-            <div class="col" style={{backgroundImage : 'url("https://images.unsplash.com/photo-1445112098124-3e76dd67983c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9")', backgroundPosition : "center", backgroundRepeat : "no-repeat", backgroundSize : "cover", height : "100vh", backgroundAttachment : "fixed"}}>
+            <div class="col" style={{backgroundImage : 'url("https://images.unsplash.com/photo-1547919307-1ecb10702e6f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9")', backgroundPosition : "center", backgroundRepeat : "no-repeat", backgroundSize : "cover", height : "100vh", backgroundAttachment : "fixed"}}>
               <div className="text-left text-white position-absolute" style={{fontFamily : "Helvetica, sans-serif", top: "50%", left: "50%", transform: "translate(-50%,-50%)"}}>
                 <h5 className="mt-5"
                 style={{fontWeight: "bold"}}>Log your workouts</h5>
