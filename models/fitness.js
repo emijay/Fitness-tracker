@@ -207,9 +207,9 @@ module.exports = (dbPoolInstance) => {
 
   let updateStats = (dataObj, callback) => {
 
-    let query = "INSERT INTO bodystats (height, weight, fatpercent) VALUES ($1, $2, $3) RETURNING *";
+    let query = "INSERT INTO bodystats (weight, fatpercent) VALUES ($1, $2) RETURNING *";
 
-      const values = [dataObj.height, dataObj.weight, dataObj.fatpercent]
+      const values = [dataObj.weight, dataObj.fatpercent]
 
 
       dbPoolInstance.query(query, values, (error, queryResult) => {
