@@ -6,20 +6,22 @@ class Form extends React.Component {
 
   render() {
 
-    console.log(this.props.allMacros)
+    let macros;
 
-    const macros = this.props.allMacros.map(item=> {
-        return( <tr>
-                    <td scope="row">{item.date}</td>
-                    <td>{item.time}</td>
-                    <td>{item.name}</td>
-                    <td>{item.carbs}</td>
-                    <td>{item.protein}</td>
-                    <td>{item.fat}</td>
-                    <td>{item.calories}</td>
-                </tr>
-        )
-    });
+    if (this.props.allMacros !== null) {
+        macros = this.props.allMacros.map(item=> {
+            return( <tr>
+                        <td scope="row">{item.date}</td>
+                        <td>{item.time}</td>
+                        <td>{item.name}</td>
+                        <td>{item.carbs}</td>
+                        <td>{item.protein}</td>
+                        <td>{item.fat}</td>
+                        <td>{item.calories}</td>
+                    </tr>
+            )
+        });
+    }
 
     return (
 
