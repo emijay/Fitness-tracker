@@ -64,8 +64,7 @@ class Form extends React.Component {
                   Set Goals
                 </button>
 
-                <div id="my_container" className="fatsecret_container">
-                </div>
+
 
             </div>
         </div>
@@ -174,13 +173,6 @@ class Form extends React.Component {
         </div>
     </div>
     </Layout>
-
-    <script src="https://platform.fatsecret.com/js?key=da59a16570ae472c98c94bde7e59ab08"></script>
-
-    <script>
-        fatsecret.setContainer("my_container");
-        fatsecret.setCanvas("home");
-    </script>
 
 
     </body>
