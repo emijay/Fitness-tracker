@@ -27,14 +27,19 @@ module.exports = (db) => {
 
           db.fitness.displayTotalMacros(request.cookies.userID, (error, currentMacros) => {
 
-          const data = {
-            lastCardioWorkout : lastCardioWorkout,
-            lastStrengthWorkout : lastStrengthWorkout,
-            currentMacros : currentMacros
-          }
+            db.fitness.getGoals(request.cookies.userID, (error, goals) => {
 
-          response.render('index', data);
+              const data = {
 
+                lastCardioWorkout : lastCardioWorkout,
+                lastStrengthWorkout : lastStrengthWorkout,
+                currentMacros : currentMacros,
+                goals: goals
+              }
+
+              response.render('index', data);
+
+            });
           });
         })
       });
@@ -105,11 +110,18 @@ module.exports = (db) => {
 
       db.fitness.displayAllMacros(request.cookies.userID, (error, allMacros) => {
 
-        data = {
-          allMacros : allMacros
-        }
+        db.fitness.getGoals(request.cookies.userID, (error, goals) => {
 
-        response.render('forms/macros', data)
+          data = {
+
+            allMacros : allMacros,
+            goals: goals
+
+          }
+
+          response.render('forms/macros', data)
+
+        });
       });
   };
 

@@ -273,6 +273,27 @@ module.exports = (dbPoolInstance) => {
       });
   };
 
+  let getGoals = (userID, callback) => {
+
+    let query = "SELECT * from macrogoals where user_id = '"+userID+"'";
+
+    dbPoolInstance.query(query, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows[0]);
+        }else{
+          callback(null, null);
+
+        }
+      }
+    });
+  };
+
   let setGoals = (userID, dataObj, callback) => {
 
     let query = "INSERT INTO macrogoals (carbs, protein, fat, calories, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING *";
@@ -310,6 +331,7 @@ module.exports = (dbPoolInstance) => {
     getHistory,
     getStats,
     updateStats,
+    getGoals,
     setGoals
   };
 };

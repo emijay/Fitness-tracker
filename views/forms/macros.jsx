@@ -4,6 +4,7 @@ var Layout = require('../layout')
 
 class Form extends React.Component {
 
+
   render() {
 
     let macros;
@@ -62,6 +63,10 @@ class Form extends React.Component {
                 <button type="button" class="btn btn-info mt-2 mb-4" data-toggle="modal" data-target="#exampleModal2" style={{position: 'relative',left: '50%', transform: 'translate(-50%,0)'}}>
                   Set Goals
                 </button>
+
+                <div id="my_container" className="fatsecret_container">
+                </div>
+
             </div>
         </div>
     </div>
@@ -135,25 +140,25 @@ class Form extends React.Component {
                         <div className="form-group row">
                           <label htmlFor="inputName" className="col-sm-3 col-form-label">Carbs</label>
                           <div className="col-sm-8">
-                            <input type="text" name="carbs" className="form-control" id="inputName"/>
+                            <input type="number" name="carbs" className="form-control" value={this.props.goals.carbs}/>
                           </div>
                         </div>
                         <div className="form-group row">
                           <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Protein</label>
                           <div className="col-sm-8">
-                            <input type="number" name="protein" className="form-control" id="inputCarbs"/>
+                            <input type="number" name="protein" className="form-control" value={this.props.goals.protein}/>
                           </div>
                         </div>
                         <div className="form-group row">
                           <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Fat</label>
                           <div className="col-sm-8">
-                            <input type="number" name="fat" className="form-control" id="inputProtein"/>
+                            <input type="number" name="fat" className="form-control" value={this.props.goals.fat}/>
                           </div>
                         </div>
                         <div className="form-group row">
                           <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Calories</label>
                           <div className="col-sm-8">
-                            <input type="number" name="calories" className="form-control" id="inputFat"/>
+                            <input type="number" name="calories" className="form-control"value={this.props.goals.calories}/>
                           </div>
                         </div>
                         <button type="submit" className="btn btn-primary my-3" style={{position: 'relative',left: '50%', transform: 'translate(-50%,0)'}}>Submit</button>
@@ -169,6 +174,14 @@ class Form extends React.Component {
         </div>
     </div>
     </Layout>
+
+    <script src="https://platform.fatsecret.com/js?key=da59a16570ae472c98c94bde7e59ab08"></script>
+
+    <script>
+        fatsecret.setContainer("my_container");
+        fatsecret.setCanvas("home");
+    </script>
+
 
     </body>
     );

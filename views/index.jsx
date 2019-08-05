@@ -91,32 +91,32 @@ class Home extends React.Component {
                     </div>
 
                     <div className="col-md-4">
-                        <div className="card-body">
+                        <div className="card-body h3">
                             <h5 className="card-title">Calories</h5>
                             <p className="card-text">
                                 {this.props.currentMacros.calories}
-                                <span className="text-muted"> / 1000</span>
+                                <span className="text-muted"> / {this.props.goals.calories}</span>
                             </p>
                         </div>
-                        <div className="card-body">
+                        <div className="card-body h3">
                             <h5 className="card-title">Carbs (g)</h5>
                             <p className="card-text">
                                 {this.props.currentMacros.carbs}
-                                <span className="text-muted"> / 1000</span>
+                                <span className="text-muted"> / {this.props.goals.carbs}</span>
                             </p>
                         </div>
-                        <div className="card-body">
+                        <div className="card-body h3">
                             <h5 className="card-title">Protein (g)</h5>
                             <p className="card-text">
                                 {this.props.currentMacros.protein}
-                                <span className="text-muted"> / 1000</span>
+                                <span className="text-muted"> / {this.props.goals.protein}</span>
                             </p>
                         </div>
-                        <div className="card-body">
+                        <div className="card-body h3">
                             <h5 className="card-title">Fats (g)</h5>
                             <p className="card-text">
                             {this.props.currentMacros.fat}
-                            <span className="text-muted"> / 1000</span></p>
+                            <span className="text-muted"> / {this.props.goals.fat}</span></p>
                         </div>
                     </div>
 
