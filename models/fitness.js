@@ -7,6 +7,52 @@ module.exports = (dbPoolInstance) => {
 
   // `dbPoolInstance` is accessible within this function scope
 
+  let createUser = (dataObj, callback) => {
+
+    let query = "INSERT INTO users (username, password, email) VALUES ($1, $2, $3) RETURNING *";
+
+    const values = [dataObj.username, dataObj.password, dataObj.email];
+
+    dbPoolInstance.query(query, values, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows);
+        }else{
+          callback(null, null);
+
+        }
+      }
+    });
+  };
+
+  let checkUser = (dataObj, callback) => {
+
+    let query = "SELECT * FROM users WHERE username = $1";
+
+    const values = [dataObj.username];
+
+    dbPoolInstance.query(query, values, (error, queryResult) => {
+      if( error ){
+        // invoke callback function with results after query has executed
+        callback(error, null);
+
+      }else{
+        // invoke callback function with results after query has executed
+        if( queryResult.rows.length > 0 ){
+          callback(null, queryResult.rows);
+        }else{
+          callback(null, null);
+
+        }
+      }
+    });
+  };
+
   let lastCardioWorkout = (callback) => {
 
     let query = "SELECT id,name,distance,duration,workout_id,user_id,to_char(created_at, 'DD-MM-YYYY') FROM exercises WHERE workout_id = 5 AND created_at = (SELECT MAX(created_at) from (SELECT * FROM exercises WHERE workout_id = 5) AS foo)";
@@ -231,6 +277,8 @@ module.exports = (dbPoolInstance) => {
 
 
   return {
+    createUser,
+    checkUser,
     lastCardioWorkout,
     lastStrengthWorkout,
     displayTotalMacros,

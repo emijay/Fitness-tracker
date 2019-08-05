@@ -15,7 +15,13 @@ module.exports = (app, allModels) => {
   // require the controller
   const fitnessControllerCallbacks = require('./controllers/fitness')(allModels);
 
-  app.get('/', fitnessControllerCallbacks.index)
+  app.get('/', fitnessControllerCallbacks.landingPage)
+
+  app.get('/register', fitnessControllerCallbacks.registerForm)
+  app.post('/users', fitnessControllerCallbacks.createUser)
+
+  app.get('/login', fitnessControllerCallbacks.loginForm )
+  app.post('/login', fitnessControllerCallbacks.login )
 
   app.get('/home', fitnessControllerCallbacks.homePage)
 
@@ -30,5 +36,10 @@ module.exports = (app, allModels) => {
 
   app.get('/stats', fitnessControllerCallbacks.statsForm)
   app.post('/stats', fitnessControllerCallbacks.updateStats)
+
+  app.post('/goals', fitnessControllerCallbacks.updateGoals)
+
+  app.post('/logout', fitnessControllerCallbacks.logout )
+
 
 };

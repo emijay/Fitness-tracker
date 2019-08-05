@@ -6,12 +6,20 @@ module.exports = (db) => {
    * ===========================================
    */
 
-  let indexControllerCallback = (request, response) => {
-      response.redirect('/home')
+  let landingPage = (request, response) => {
+
+    if(request.cookies.loggedin === "true") {
+        response.redirect('/home')
+    } else {
+      response.render('landingPage');
+    }
+
   };
 
 
   let homePageController = (request, response) => {
+
+    if(request.cookies.loggedin === "true") {
 
       db.fitness.lastCardioWorkout( (error, lastCardioWorkout) => {
 
@@ -29,6 +37,52 @@ module.exports = (db) => {
 
           });
         })
+      });
+
+    } else {
+      response.render('landingPage');
+    }
+
+  };
+
+  let registerForm = (request, response) => {
+      response.render('forms/register');
+  };
+
+  let createUserController = (request, response) => {
+
+
+      db.fitness.createUser(request.body, (error, userCreated) => {
+
+        response.cookie('userID', userCreated[0].id)
+        response.cookie('username', userCreated[0].username)
+        response.cookie('loggedin', true);
+        response.redirect('/home');
+      });
+  };
+
+  let loginForm = (request, response) => {
+
+    response.render('forms/login');
+
+  };
+
+  let loginController = (request, response) => {
+
+      db.fitness.checkUser(request.body, (error, checkResult) => {
+
+        if(request.body.password === checkResult[0].password){
+
+            response.cookie('userID', checkResult[0].id)
+            response.cookie('username', checkResult[0].username)
+            response.cookie('loggedin', true);
+            response.redirect('/home');
+
+        } else{
+            console.log("Wrong password!")
+            response.status(403);
+        }
+
       });
   };
 
@@ -98,6 +152,23 @@ module.exports = (db) => {
       });
   };
 
+  let updateGoals = (request, response) => {
+
+    db.fitness.getStats((error, bodystats) => {
+
+      response.render('forms/bodystats', bodystats)
+      });
+
+  };
+
+  let logoutController = (request, response) => {
+
+      response.cookie('userID', null)
+      response.cookie('username', null)
+      response.cookie('loggedin', false);
+      response.redirect('/');
+  };
+
 
   /**
    * ===========================================
@@ -105,8 +176,12 @@ module.exports = (db) => {
    * ===========================================
    */
   return {
-    index: indexControllerCallback,
+    landingPage,
+    registerForm,
     homePage : homePageController,
+    createUser: createUserController,
+    loginForm,
+    login : loginController,
     workoutForm,
     createWorkout : createWorkoutController,
     macrosPage,
@@ -114,7 +189,9 @@ module.exports = (db) => {
     trainingLogForm,
     getWorkoutHistory : historyController,
     statsForm,
-    updateStats : updateStatsController
+    updateStats : updateStatsController,
+    updateGoals,
+    logout : logoutController
 
   };
 

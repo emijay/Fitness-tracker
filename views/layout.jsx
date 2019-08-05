@@ -46,6 +46,10 @@ class Layout extends React.Component {
             </ul>
 
           </div>
+
+          <form action="/logout" method="POST">
+              <button type="submit" className="btn btn-link">Log Out</button>
+            </form>
         </nav>
 
         {this.props.children}
