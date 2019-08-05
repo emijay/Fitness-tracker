@@ -45,15 +45,3 @@ class Login extends React.Component {
 }
 
 module.exports = Login;
-
-<form action="/login" method="POST" className = "text-black">
-              <div className="form-group">
-                <label htmlFor="inputUsername">Username</label>
-                <input type="username" name="username" className="form-control" id="inputUsername" aria-describedby="emailHelp" placeholder="Enter username" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="inputPassword">Password</label>
-                <input type="password" name="password" className="form-control" id="inputPassword" placeholder="Password" />
-              </div>
-              <button type="submit" className="btn btn-primary">Submit</button>
-            </form>

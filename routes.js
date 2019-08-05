@@ -37,6 +37,8 @@ module.exports = (app, allModels) => {
   app.get('/stats', fitnessControllerCallbacks.statsForm)
   app.post('/stats', fitnessControllerCallbacks.updateStats)
 
+  app.get('/foodAPI', fitnessControllerCallbacks.foodAPIform)
+
   app.post('/goals', fitnessControllerCallbacks.updateGoals)
 
   app.post('/logout', fitnessControllerCallbacks.logout )

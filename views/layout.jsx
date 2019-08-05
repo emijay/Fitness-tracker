@@ -31,8 +31,13 @@ class Layout extends React.Component {
                   <a class="dropdown-item" href="#">Search Exercises</a>
                 </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/macros">Macronutrients</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Macronutrients
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/macros">Update Macros</a>
+                  <a class="dropdown-item" href="/foodAPI">Food API</a>
+                </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/stats">Body Stats</a>

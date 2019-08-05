@@ -176,6 +176,11 @@ module.exports = (db) => {
 
   };
 
+  let foodAPIform = (request, response) => {
+      response.render('forms/foodAPI')
+
+  };
+
   let logoutController = (request, response) => {
 
       response.cookie('userID', null)
@@ -206,6 +211,7 @@ module.exports = (db) => {
     statsForm,
     updateStats : updateStatsController,
     updateGoals,
+    foodAPIform,
     logout : logoutController
 
   };
