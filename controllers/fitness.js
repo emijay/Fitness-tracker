@@ -29,6 +29,8 @@ module.exports = (db) => {
 
             db.fitness.getGoals(request.cookies.userID, (error, goals) => {
 
+                console.log(goals)
+
               const data = {
 
                 lastCardioWorkout : lastCardioWorkout,

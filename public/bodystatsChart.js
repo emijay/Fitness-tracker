@@ -1,5 +1,5 @@
 
-
+// Data has been passed over as an Object (currentStats)
 var newArrayData = Object.values(currentStats)
 
 

@@ -9,6 +9,14 @@ class Home extends React.Component {
     let lastStrengthDate;
     let cardioExercises;
     let strengthExercises;
+    let currentCalories;
+    let currentCarbs;
+    let currentProtein;
+    let currentFat;
+    let goalCalories;
+    let goalCarbs;
+    let goalProtein;
+    let goalFat;
 
     if (this.props.lastCardioWorkout !== null) {
         lastCardioDate = (this.props.lastCardioWorkout[0].to_char);
@@ -35,6 +43,34 @@ class Home extends React.Component {
                     </tr>
             )
         });
+    }
+
+    if (this.props.currentMacros.calories !== null) {
+        currentCalories = this.props.currentMacros.calories;
+    }
+
+    if (this.props.currentMacros.carbs !== null) {
+        currentCarbs = this.props.currentMacros.carbs;
+    }
+
+    if (this.props.currentMacros.protein !== null) {
+        currentProtein= this.props.currentMacros.protein;
+    }
+
+    if (this.props.currentMacros.fat !== null) {
+        currentFat = this.props.currentMacros.fat;
+    }
+
+    if (this.props.goals !== null) {
+        goalCalories = this.props.goals.calories;
+        goalCarbs = this.props.goals.carbs;
+        goalProtein = this.props.goals.protein;
+        goalFat = this.props.goals.fat;
+    } else {
+        goalCalories = "0"
+        goalCarbs = "0"
+        goalProtein = "0"
+        goalFat = "0"
     }
 
     return (
@@ -94,29 +130,29 @@ class Home extends React.Component {
                         <div className="card-body h3">
                             <h5 className="card-title">Calories</h5>
                             <p className="card-text">
-                                {this.props.currentMacros.calories}
-                                <span className="text-muted"> / {this.props.goals.calories}</span>
+                                {currentCalories}
+                                <span className="text-muted"> / {goalCalories}</span>
                             </p>
                         </div>
                         <div className="card-body h3">
                             <h5 className="card-title">Carbs (g)</h5>
                             <p className="card-text">
-                                {this.props.currentMacros.carbs}
-                                <span className="text-muted"> / {this.props.goals.carbs}</span>
+                                {currentCarbs}
+                                <span className="text-muted"> / {goalCarbs}</span>
                             </p>
                         </div>
                         <div className="card-body h3">
                             <h5 className="card-title">Protein (g)</h5>
                             <p className="card-text">
-                                {this.props.currentMacros.protein}
-                                <span className="text-muted"> / {this.props.goals.protein}</span>
+                                {currentProtein}
+                                <span className="text-muted"> / {goalProtein}</span>
                             </p>
                         </div>
                         <div className="card-body h3">
                             <h5 className="card-title">Fats (g)</h5>
                             <p className="card-text">
-                            {this.props.currentMacros.fat}
-                            <span className="text-muted"> / {this.props.goals.fat}</span></p>
+                                {currentFat}
+                            <span className="text-muted"> / {goalFat}</span></p>
                         </div>
                     </div>
 

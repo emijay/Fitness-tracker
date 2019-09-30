@@ -275,7 +275,7 @@ module.exports = (dbPoolInstance) => {
 
   let getGoals = (userID, callback) => {
 
-    let query = "SELECT * from macrogoals where user_id = '"+userID+"'";
+    let query = "SELECT * from macrogoals where user_id = '"+userID+"' ORDER BY created_at DESC" ;
 
     dbPoolInstance.query(query, (error, queryResult) => {
       if( error ){

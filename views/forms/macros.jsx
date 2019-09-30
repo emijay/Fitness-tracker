@@ -8,6 +8,10 @@ class Form extends React.Component {
   render() {
 
     let macros;
+    let carbs;
+    let protein;
+    let fat;
+    let calories;
 
     if (this.props.allMacros !== null) {
         macros = this.props.allMacros.map(item=> {
@@ -134,33 +138,37 @@ class Form extends React.Component {
 
                   <div class="modal-body">
                     <form action="/goals" method="POST" className ="text-black my-5 mx-5">
-                        <div className="form-group row">
-                          <label htmlFor="inputName" className="col-sm-3 col-form-label">Carbs</label>
-                          <div className="col-sm-8">
-                            <input type="number" name="carbs" className="form-control" value={this.props.goals.carbs}/>
-                          </div>
+
+                    <div className="form-group row">
+                        <label htmlFor="inputName" className="col-sm-3 col-form-label">Carbs</label>
+                        <div className="col-sm-8">
+                            <input type="number" name="carbs" className="form-control"/>
                         </div>
-                        <div className="form-group row">
-                          <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Protein</label>
-                          <div className="col-sm-8">
-                            <input type="number" name="protein" className="form-control" value={this.props.goals.protein}/>
-                          </div>
+                    </div>
+                    <div className="form-group row">
+                        <label htmlFor="inputName" className="col-sm-3 col-form-label">Protein</label>
+                        <div className="col-sm-8">
+                            <input type="number" name="protein" className="form-control"/>
                         </div>
-                        <div className="form-group row">
-                          <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Fat</label>
-                          <div className="col-sm-8">
-                            <input type="number" name="fat" className="form-control" value={this.props.goals.fat}/>
-                          </div>
+                    </div>
+                    <div className="form-group row">
+                        <label htmlFor="inputName" className="col-sm-3 col-form-label">Fats</label>
+                        <div className="col-sm-8">
+                            <input type="number" name="fat" className="form-control"/>
                         </div>
-                        <div className="form-group row">
-                          <label htmlFor="inputCalories" className="col-sm-3 col-form-label">Calories</label>
-                          <div className="col-sm-8">
-                            <input type="number" name="calories" className="form-control"value={this.props.goals.calories}/>
-                          </div>
+                    </div>
+                    <div className="form-group row">
+                        <label htmlFor="inputName" className="col-sm-3 col-form-label">Calories</label>
+                        <div className="col-sm-8">
+                            <input type="number" name="calories" className="form-control"/>
                         </div>
-                        <button type="submit" className="btn btn-primary my-3" style={{position: 'relative',left: '50%', transform: 'translate(-50%,0)'}}>Submit</button>
+                    </div>
+
+
+                    <button type="submit" className="btn btn-primary my-3" style={{position: 'relative',left: '50%', transform: 'translate(-50%,0)'}}>Submit</button>
                     </form>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
